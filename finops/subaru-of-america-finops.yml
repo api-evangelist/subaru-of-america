@@ -1,0 +1,194 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+provider: Subaru of America
+providerId: subaru-of-america
+publisherName: Subaru of America
+serviceCategory: Connected Vehicle / Telematics
+created: '2026-05-23'
+modified: '2026-05-23'
+tags:
+  - Automobiles
+  - Automotive
+  - Connected Vehicle
+  - Telematics
+  - FinOps
+  - Cost Management
+  - FOCUS
+description: >-
+  FinOps framework definition for the Subaru of America connected-vehicle surface.
+  Because Subaru does not sell API access directly, the unit of cost here is the
+  consumer subscription (MySubaru Companion / Safety & Security) and the partner
+  pass-through services (AT&T Wi-Fi, SiriusXM). The FOCUS-aligned mapping below
+  is intended to let internal Subaru / SOA teams allocate telematics-platform
+  cost against the subscriptions, vehicles, and partner services that drive it.
+principles:
+  - name: Visibility
+    description: >-
+      Make MySubaru / STARLINK telematics platform consumption visible to product,
+      engineering, dealer-operations, and finance teams in near real-time.
+  - name: Allocation
+    description: >-
+      Tag every chargeable backend call with the owning subscription tier,
+      vehicle / VIN cohort, model year, region, and partner so platform cost can
+      be allocated back to the consumer-facing offering that drove it.
+  - name: Optimization
+    description: >-
+      Continuously evaluate command volume, polling cadence, push vs poll mix,
+      and partner-service pass-through pricing to reduce cost per active vehicle.
+  - name: Accountability
+    description: >-
+      Establish budget owners for the connected-services platform, dealer
+      systems, and partner-service pass-throughs (AT&T, SiriusXM).
+domains:
+  - name: Understand Usage and Cost
+    capabilities:
+      - Data Ingestion
+      - Allocation
+      - Reporting and Analytics
+      - Anomaly Management
+  - name: Quantify Business Value
+    capabilities:
+      - Planning and Estimating
+      - Forecasting
+      - Budgeting
+      - Benchmarking
+      - Unit Economics
+  - name: Optimize Usage and Cost
+    capabilities:
+      - Architecting for Cloud
+      - Rate Optimization
+      - Workload Optimization
+      - Cloud Sustainability
+      - Licensing and SaaS
+  - name: Manage the FinOps Practice
+    capabilities:
+      - FinOps Practice Operations
+      - FinOps Education and Enablement
+      - Invoicing and Chargeback
+      - Onboarding Workloads
+      - Intersecting Disciplines
+billingModel:
+  pricingCategory: Subscription
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+    - Usage
+    - Purchase
+    - Tax
+    - Credit
+    - Adjustment
+  chargeFrequency: Recurring
+focusColumns:
+  ServiceName: MySubaru Connected Services
+  ServiceCategory: Connected Vehicle / Telematics
+  ProviderName: Subaru of America
+  PublisherName: Subaru of America
+  InvoiceIssuerName: Subaru of America
+  PricingCategory: Subscription
+  PricingUnit: vehicle-month
+  BillingCurrency: USD
+  ChargeCategory: Usage
+meters:
+  - name: active_vehicles
+    description: Count of vehicles with an active MySubaru / STARLINK subscription
+    unit: vehicle-month
+    aggregation: avg
+    dimensions:
+      - plan
+      - model_year
+      - region
+      - dealer
+  - name: remote_commands
+    description: Count of remote commands issued (lock, unlock, start, locate, etc.)
+    unit: command
+    aggregation: sum
+    dimensions:
+      - command_type
+      - plan
+      - vehicle
+      - region
+  - name: sos_events
+    description: Count of SOS / Automatic Collision Notification events handled
+    unit: event
+    aggregation: sum
+    dimensions:
+      - event_type
+      - plan
+      - region
+  - name: partner_passthrough
+    description: Partner-service billable units passed through to the owner (AT&T data GB, SiriusXM months)
+    unit: composite
+    aggregation: sum
+    dimensions:
+      - partner
+      - plan
+      - vehicle
+apis:
+  - name: MySubaru Connected Services API
+    baseURL: ''
+    tags:
+      - Connected Vehicle
+      - Telematics
+    serviceName: MySubaru Connected Services
+    serviceCategory: Connected Vehicle / Telematics
+  - name: MySubaru Companion Plan API
+    baseURL: ''
+    tags:
+      - Subscriptions
+      - Entitlements
+    serviceName: MySubaru Companion Plan
+    serviceCategory: Subscription Management
+  - name: MySubaru Safety & Security Plan API
+    baseURL: ''
+    tags:
+      - Subscriptions
+      - Safety
+    serviceName: MySubaru Safety & Security Plan
+    serviceCategory: Subscription Management
+  - name: Subaru AT&T Wi-Fi Hotspot API
+    baseURL: ''
+    tags:
+      - Connectivity
+      - Partner Service
+    serviceName: AT&T In-Vehicle Wi-Fi
+    serviceCategory: Partner Pass-Through
+  - name: Subaru SiriusXM API
+    baseURL: ''
+    tags:
+      - Audio
+      - Partner Service
+    serviceName: SiriusXM
+    serviceCategory: Partner Pass-Through
+  - name: Subaru Dealer Locator API
+    baseURL: ''
+    tags:
+      - Dealer Locator
+      - Retail
+    serviceName: Subaru Dealer Locator
+    serviceCategory: Web Service
+  - name: Subaru Recall Lookup API
+    baseURL: ''
+    tags:
+      - Recalls
+      - Safety
+    serviceName: Subaru Recall Lookup
+    serviceCategory: Web Service
+unitEconomics:
+  - name: Platform Cost per Active Vehicle-Month
+    metric: platform_cost / active_vehicle_months
+    target: TBD
+  - name: Platform Cost per Remote Command
+    metric: platform_cost / remote_commands
+    target: TBD
+  - name: SOS Cost per Event
+    metric: sos_handling_cost / sos_events
+    target: TBD
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

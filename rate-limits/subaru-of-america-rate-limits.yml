@@ -1,0 +1,99 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Subaru of America
+providerId: subaru-of-america
+created: '2026-05-23'
+modified: '2026-05-23'
+tags:
+  - Automobiles
+  - Automotive
+  - Connected Vehicle
+  - Telematics
+  - Rate Limiting
+  - Quotas
+  - Throttling
+description: >-
+  Scaffold rate-limit definitions for the Subaru of America connected-vehicle backend.
+  Subaru does not publish official limits; the figures below are conservative
+  reverse-engineered observations from open-source clients (e.g., G-two/subarulink)
+  and reflect remote-command pacing rather than developer-API quotas. Replace with
+  authoritative values when Subaru exposes a documented developer surface.
+headers:
+  limit: ''
+  remaining: ''
+  reset: ''
+  retryAfter: Retry-After
+  policy: ''
+responseCodes:
+  throttled: 429
+  quotaExceeded: 429
+  serviceUnavailable: 503
+limits:
+  - tier: owner
+    name: Remote Command Pacing
+    scope: vehicle
+    metric: commands_per_minute
+    limit: 1
+    burst: 2
+    timeFrame: minute
+    applies:
+      - MySubaru Connected Services API
+  - tier: owner
+    name: Vehicle Locate Polling
+    scope: vehicle
+    metric: requests_per_minute
+    limit: 2
+    burst: 5
+    timeFrame: minute
+    applies:
+      - MySubaru Connected Services API
+  - tier: owner
+    name: Session Authentication
+    scope: account
+    metric: logins_per_hour
+    limit: 10
+    timeFrame: hour
+    applies:
+      - MySubaru Connected Services API
+  - tier: partner
+    name: Dealer Locator Web Calls
+    scope: ip
+    metric: requests_per_minute
+    limit: 60
+    burst: 120
+    timeFrame: minute
+    applies:
+      - Subaru Dealer Locator API
+  - tier: partner
+    name: Recall Lookup Web Calls
+    scope: ip
+    metric: requests_per_minute
+    limit: 30
+    burst: 60
+    timeFrame: minute
+    applies:
+      - Subaru Recall Lookup API
+policies:
+  - name: Backoff Strategy
+    description: >-
+      Clients should implement exponential backoff with jitter. The MySubaru
+      backend has been observed returning generic 5xx responses under load; honor
+      Retry-After when present and otherwise back off aggressively.
+  - name: Remote Command Serialization
+    description: >-
+      Remote vehicle commands (lock, unlock, start, horn, lights) are typically
+      serialized per-vehicle. Issuing a new command before the previous one
+      reports terminal status will either fail or be queued.
+  - name: Reverse-Engineered Surface Warning
+    description: >-
+      There is no official public API. All limits documented here are derived from
+      community projects and the MySubaru mobile app's observed behavior, and may
+      change without notice.
+  - name: Partner Backend Limits Apply
+    description: >-
+      AT&T Wi-Fi and SiriusXM are governed by their respective partner backends.
+      Their rate limits are not enumerated here.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

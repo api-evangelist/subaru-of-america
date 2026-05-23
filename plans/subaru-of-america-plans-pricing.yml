@@ -1,0 +1,150 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Subaru of America
+providerId: subaru-of-america
+created: '2026-05-23'
+modified: '2026-05-23'
+tags:
+  - Automobiles
+  - Automotive
+  - Cars
+  - Vehicles
+  - Connected Vehicle
+  - Telematics
+description: >-
+  Machine-readable plans and pricing scaffold for the Subaru of America connected-vehicle
+  surface. Subaru does not publish a developer API price book; the plans below mirror the
+  consumer-facing MySubaru Connected Services tiers (formerly STARLINK) as documented at
+  subaru.com/owners/starlink.html. Replace TBD prices with the figures from the owner
+  pricing page or dealer quote when validating.
+plans:
+  - id: subaru-of-america-companion-base
+    name: MySubaru Companion (Base)
+    type: subscription
+    description: >-
+      Base 2026+ MySubaru Companion plan. Includes SOS Emergency Assistance,
+      Enhanced Roadside Assistance, and Locate Vehicle. Trial period typically
+      bundled with new-vehicle purchase; recurring pricing handled inside the
+      MySubaru account.
+    entries:
+      - label: Subscription
+        description: Recurring connected-services subscription
+        name: subscription
+        type: recurring
+        metric: month
+        limit: 1
+        timeFrame: month
+        geo: us
+        domains: []
+        unit: 1
+        price: TBD
+        userMultiplied: false
+    elements:
+      - name: SOS Emergency Assistance
+      - name: Enhanced Roadside Assistance
+      - name: Locate Vehicle
+      - name: Vehicle Service Reminders
+      - name: MySubaru Mobile App Access
+  - id: subaru-of-america-companion-premium
+    name: MySubaru Companion (Premium)
+    type: subscription
+    description: >-
+      Premium 2026+ MySubaru Companion plan. Adds remote engine start with
+      climate control and additional remote convenience features on top of the
+      base safety bundle.
+    entries:
+      - label: Subscription
+        description: Recurring connected-services subscription
+        name: subscription
+        type: recurring
+        metric: month
+        limit: 1
+        timeFrame: month
+        geo: us
+        domains: []
+        unit: 1
+        price: TBD
+        userMultiplied: false
+    elements:
+      - name: Everything in Companion (Base)
+      - name: Remote Engine Start with Climate Control
+      - name: Remote Lock / Unlock
+      - name: Remote Horn and Lights
+  - id: subaru-of-america-safety-security
+    name: MySubaru Safety & Security
+    type: subscription
+    description: >-
+      Legacy plan tier for 2016-2025 model years. Base level covers safety and
+      security protection services; upper tier adds Remote Engine Start and
+      Remote Vehicle Locate. Mirrors the prior Subaru STARLINK Safety Plus and
+      Security Plus packages.
+    entries:
+      - label: Subscription
+        description: Recurring connected-services subscription
+        name: subscription
+        type: recurring
+        metric: month
+        limit: 1
+        timeFrame: month
+        geo: us
+        domains: []
+        unit: 1
+        price: TBD
+        userMultiplied: false
+    elements:
+      - name: SOS Emergency Assistance
+      - name: Enhanced Roadside Assistance
+      - name: Automatic Collision Notification
+      - name: Stolen Vehicle Recovery
+      - name: Remote Engine Start (upper tier)
+      - name: Remote Vehicle Locate (upper tier)
+  - id: subaru-of-america-att-wifi
+    name: AT&T In-Vehicle Wi-Fi Hotspot
+    type: paid
+    description: >-
+      In-vehicle 4G LTE Wi-Fi hotspot delivered through AT&T. Billing and plan
+      management run on AT&T's connected-car platform; Subaru lists the offering
+      but does not price or invoice it directly.
+    entries:
+      - label: Data Plan
+        description: AT&T connected-car data plan
+        name: att_data
+        type: recurring
+        metric: month
+        limit: 1
+        timeFrame: month
+        geo: us
+        domains: []
+        unit: 1
+        price: TBD
+        userMultiplied: false
+    elements:
+      - name: 4G LTE In-Car Wi-Fi
+      - name: AT&T Account Management
+  - id: subaru-of-america-siriusxm
+    name: SiriusXM Audio (Trial / Subscription)
+    type: paid
+    description: >-
+      SiriusXM satellite and streaming audio. Trial bundled with vehicle
+      purchase; recurring subscription billed by SiriusXM.
+    entries:
+      - label: Subscription
+        description: SiriusXM recurring subscription
+        name: siriusxm
+        type: recurring
+        metric: month
+        limit: 1
+        timeFrame: month
+        geo: us
+        domains: []
+        unit: 1
+        price: TBD
+        userMultiplied: false
+    elements:
+      - name: Satellite Radio
+      - name: Streaming Audio
+      - name: SiriusXM Account Management
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
