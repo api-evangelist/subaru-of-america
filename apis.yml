@@ -166,7 +166,7 @@ common:
     url: https://www.subaru.com/owners/connected-services.html
   - type: STARLINK / MySubaru
     url: https://www.subaru.com/owners/starlink.html
-  - type: Customer Service
+  - type: Support
     url: https://www.subaru.com/customer-support.html
   - type: Vehicle Recalls
     url: https://www.subaru.com/owners/vehicle-recalls.html
@@ -178,7 +178,7 @@ common:
     url: https://x.com/subaru_usa
   - type: Plans Pricing
     url: plans/subaru-of-america-plans-pricing.yml
-  - type: Rate Limits
+  - type: RateLimits
     url: rate-limits/subaru-of-america-rate-limits.yml
   - type: FinOps
     url: finops/subaru-of-america-finops.yml
