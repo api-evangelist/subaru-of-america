@@ -156,6 +156,8 @@ apis:
       - type: Upstream Public Source
         url: https://api.nhtsa.gov/
 common:
+  - type: DomainSecurity
+    url: security/subaru-of-america-domain-security.yml
   - type: Website
     url: https://www.subaru.com/
   - type: Owner Portal
