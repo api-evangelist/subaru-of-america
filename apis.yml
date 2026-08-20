@@ -80,6 +80,11 @@ apis:
       public API for plan administration.
     humanURL: https://www.subaru.com/owners/starlink.html
     tags:
+      - Subscription
+      - Entitlements
+      - Safety
+      - Connected Vehicle
+    tags_raw:
       - Subscriptions
       - Entitlements
       - Safety
@@ -96,6 +101,12 @@ apis:
       not exposed publicly.
     humanURL: https://www.subaru.com/owners/starlink.html
     tags:
+      - Subscription
+      - Entitlements
+      - Safety
+      - Security
+      - Connected Vehicle
+    tags_raw:
       - Subscriptions
       - Entitlements
       - Safety
