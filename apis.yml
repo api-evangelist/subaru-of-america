@@ -9,6 +9,8 @@ description: >-
   Wi-Fi, and dealer integration. None of these surfaces are exposed as a public
   developer API; all known interfaces are private, OEM-internal, or partner-only.
 url: >-
+x-api-posture: partner-gated
+x-api-posture-basis: observed
   https://raw.githubusercontent.com/api-evangelist/subaru-of-america/refs/heads/main/apis.yml
 type: Index
 deliveryModel:
