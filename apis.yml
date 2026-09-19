@@ -42,6 +42,14 @@ tags:
   - Automotive
   - Cars
   - Vehicles
+  - Connected Vehicles
+  - Telematics
+  - OEM
+tags_raw:
+  - Automobiles
+  - Automotive
+  - Cars
+  - Vehicles
   - Connected Vehicle
   - Telematics
   - OEM
@@ -64,6 +72,13 @@ apis:
     humanURL: https://www.subaru.com/owners/starlink.html
     baseURL: ''
     tags:
+      - Connected Vehicles
+      - Telematics
+      - Remote Commands
+      - Safety
+      - Security
+      - Mobile App Backend
+    tags_raw:
       - Connected Vehicle
       - Telematics
       - Remote Commands
@@ -96,7 +111,7 @@ apis:
       - Subscription
       - Entitlements
       - Safety
-      - Connected Vehicle
+      - Connected Vehicles
     tags_raw:
       - Subscriptions
       - Entitlements
@@ -118,7 +133,7 @@ apis:
       - Entitlements
       - Safety
       - Security
-      - Connected Vehicle
+      - Connected Vehicles
     tags_raw:
       - Subscriptions
       - Entitlements
